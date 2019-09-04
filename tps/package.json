@@ -1,0 +1,18 @@
+{
+  "name": "typescript_tps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "yarn run tsc --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^12.7.4",
+    "@types/readline-sync": "^1.4.3",
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.2",
+    "readline-sync": "^1.4.10",
+    "typescript": "^3.6.2"
+  }
+}

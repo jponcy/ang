@@ -1,0 +1,46 @@
+Arguments: 
+  /home/jonathan.poncy/.nvm/versions/node/v10.16.0/bin/node /home/jonathan.poncy/.nvm/versions/node/v10.16.0/bin/yarn add @types/node typescript nodemon concurrenthly
+
+PATH: 
+  /home/jonathan.poncy/.nvm/versions/node/v10.16.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/jonathan.poncy/.rvm/bin:/opt/tactfactory/php-oxygen/eclipse/eclipse:/opt/tactfactory/gradle/4.8/bin:/home/jonathan.poncy/.softs/usr/share/code:/home/jonathan.poncy/.softs/usr/bin/:/usr/local/sbin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.16.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/concurrenthly: Not found
+      at Request.params.callback [as _callback] (/home/jonathan.poncy/.nvm/versions/node/v10.16.0/lib/node_modules/yarn/lib/cli.js:66091:18)
+      at Request.self.callback (/home/jonathan.poncy/.nvm/versions/node/v10.16.0/lib/node_modules/yarn/lib/cli.js:129590:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/home/jonathan.poncy/.nvm/versions/node/v10.16.0/lib/node_modules/yarn/lib/cli.js:130562:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/home/jonathan.poncy/.nvm/versions/node/v10.16.0/lib/node_modules/yarn/lib/cli.js:130484:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "typescript_tps",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
