@@ -1,3 +1,5 @@
+import { Utils } from "./utils";
+
 // type ProductType = 'viande'|'légume'|'non spécifique';
 
 export enum ProductType {
@@ -49,29 +51,23 @@ export class Product {
 
     constructor(public label: string, public type: ProductType, public buyingPrice: number,
             advicedSellPrice: number, public important: boolean = false, public description: string = '') {
-        this.advicedSellPrice = advicedSellPrice;
-        // this.updateAdvicedSellPriceWithTaxes();
+        this._advicedSellPrice = advicedSellPrice;
+        this.advicedSellPriceWithTaxes = Utils.computeTaxes(advicedSellPrice, important);
     }
 
     set advicedSellPrice(price: number) {
         this._advicedSellPrice = price;
-        this.updateAdvicedSellPriceWithTaxes();
+        this.advicedSellPriceWithTaxes = Utils.computeTaxes(price, this.important);
+    }
+
+    toto(price: number) {
+        this._advicedSellPrice = price;
+        this.advicedSellPriceWithTaxes = Utils.computeTaxes(price, this.important);
+
     }
 
     get advicedSellPrice(): number {
         return this._advicedSellPrice;
-    }
-
-    private updateAdvicedSellPriceWithTaxes() {
-        // if (this.important) {
-        //     this.advicedSellPriceWithTaxes = this.advicedSellPrice * 1.2;
-        // } else {
-        //     this.advicedSellPriceWithTaxes = this.advicedSellPrice * 1.055;
-        // }
-        // Or
-        this.advicedSellPriceWithTaxes = this.advicedSellPrice * (this.important ? 1.2 : 1.055);
-        // Or --- not recomanded
-        // this.advicedSellPriceWithTaxes = this.advicedSellPrice * ((+this.important * 1.2) || 1.055);
     }
 
 
