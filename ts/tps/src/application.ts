@@ -10,7 +10,9 @@ export class Application {
     }
 
     run() {
-        if (this.login()) {
+        const store = this.login();
+
+        if (store) {
             console.log('Bienvenue');
 
             this.printMenu();
@@ -20,7 +22,7 @@ export class Application {
             if (choice.match(/^\d+$/)) {
                 switch (+choice) {
                     case 1:
-                        // this.printProducts();
+                        store.printAllProducts();
                         break;
                     case 2:
                         // this.addProduct();
@@ -38,10 +40,10 @@ export class Application {
         }
     }
 
-    private login(): boolean {
+    private login(): Store|null {
         const name = readline.question('Quel est le nom de votre entreprise ?');
 
-        return this.stores.some(store => store.name === name);
+        return this.stores.find(store => store.name === name) || null;
     }
 
     private login2(): boolean {
