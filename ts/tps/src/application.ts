@@ -12,6 +12,29 @@ export class Application {
     run() {
         if (this.login()) {
             console.log('Bienvenue');
+
+            this.printMenu();
+
+            const choice = readline.question('Que voulez vous faire ? (saisir un nombre entre 1 et 3)');
+
+            if (choice.match(/^\d+$/)) {
+                switch (+choice) {
+                    case 1:
+                        // this.printProducts();
+                        break;
+                    case 2:
+                        // this.addProduct();
+                        break;
+                    case 3:
+                        // this.removeProduct();
+                        break;
+                    default:
+                        console.error('Saisie invalide (non compris entre 1 et 3');
+                        break;
+                }
+            } else {
+                console.error('Merci de saisir un nombre entre 1 et 3');
+            }
         }
     }
 
@@ -37,6 +60,12 @@ export class Application {
         }
 
         return result;
+    }
+
+    private printMenu() {
+        console.log('1. Afficher mes produits');
+        console.log('2. Ajouter un produit');
+        console.log('3. Retirer un produit');
     }
 
     private fillProducts(): void {
