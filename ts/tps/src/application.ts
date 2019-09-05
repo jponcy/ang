@@ -84,7 +84,7 @@ export class Application {
             price = readline.question('Combien allez-vous vendre ce produit en HT (prix conseillé = ' + choicedProduct.advicedSellPrice + ')');
         }
 
-        price = price.replace(/\s+/, '').replace(',', '.');
+        price = price.replace(/\s+/g, '').replace(',', '.');
 
         // Create/add object.
         const newProduct = new SellProduct(choicedProduct, parseFloat(price) || choicedProduct.advicedSellPrice);
