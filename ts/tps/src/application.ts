@@ -17,25 +17,18 @@ export class Application {
 
             this.printMenu();
 
-            const choice = readline.question('Que voulez vous faire ? (saisir un nombre entre 1 et 3)');
+            const choice = this.askNumber('Que voulez vous faire ? (saisir un nombre entre 1 et 3)', 3);
 
-            if (choice.match(/^\d+$/)) {
-                switch (+choice) {
-                    case 1:
-                        store.printAllProducts();
-                        break;
-                    case 2:
-                        // this.addProduct();
-                        break;
-                    case 3:
-                        // this.removeProduct();
-                        break;
-                    default:
-                        console.error('Saisie invalide (non compris entre 1 et 3');
-                        break;
-                }
-            } else {
-                console.error('Merci de saisir un nombre entre 1 et 3');
+            switch (choice) {
+                case 1:
+                    store.printAllProducts();
+                    break;
+                case 2:
+                    this.addProduct(store);
+                    break;
+                case 3:
+                    // this.removeProduct();
+                    break;
             }
         }
     }
@@ -46,16 +39,16 @@ export class Application {
         return this.stores.find(store => store.name === name) || null;
     }
 
-    private login2(): boolean {
+    private login2(): Store|null {
         const name = readline.question('Quel est le nom de votre entreprise ?');
-        let result = false;
+        let result: Store|null = null;
         let counter = 0;
 
-        while (counter < this.stores.length && !result) {
+        while (counter < this.stores.length && result === null) {
             const store = this.stores[counter];
 
             if (store.name === name) {
-                result = true;
+                result = store;
             }
 
             ++counter;
@@ -68,6 +61,34 @@ export class Application {
         console.log('1. Afficher mes produits');
         console.log('2. Ajouter un produit');
         console.log('3. Retirer un produit');
+    }
+
+    private addProduct(store: Store): void {
+        // Determine list of available products
+        const used = store.products.map(pp => pp.product);
+        const availableProducts = this.products.filter(p => !used.includes(p));
+
+        // Print list of available products
+        availableProducts.forEach((p, i) => console.log(`- ${i + 1} ${p.label}`));
+
+        // Ask/get product (index).
+        const choice = this.askNumber('Quel produit vous intéresse ?', availableProducts.length);
+        const choicedProduct = availableProducts[choice - 1];
+
+        // Ask price.
+        let price = readline.question('Combien allez-vous vendre ce produit en HT (prix conseillé = ' + choicedProduct.advicedSellPrice + ')');
+
+        // Reask number until input is valid
+        while (!price.match(/^\s*(?:\d[\d\s]*(?:[.,]\d{1,2})?)?$/)) {
+            console.error('Ce format n\'est pas accepté');
+            price = readline.question('Combien allez-vous vendre ce produit en HT (prix conseillé = ' + choicedProduct.advicedSellPrice + ')');
+        }
+
+        price = price.replace(/\s+/, '').replace(',', '.');
+
+        // Create/add object.
+        const newProduct = new SellProduct(choicedProduct, parseFloat(price) || choicedProduct.advicedSellPrice);
+        store.products.push(newProduct);
     }
 
     private fillProducts(): void {
@@ -87,5 +108,15 @@ export class Application {
     private generateSellProducts(name: string, index: number): SellProduct[] {
         return [this.products[0], this.products[2], this.products[3], this.products[5]]
             .map(p => new SellProduct(p, p.advicedSellPrice));
+    }
+
+    private askNumber(question: string, nbMax: number): number {
+        let choice = readline.question(question);
+
+        while (!choice.match(/^\d+$/) || +choice > nbMax || +choice <= 0) {
+            console.error('La saisie n\'est pas un nombre compris entre 1 et ' + nbMax);
+        }
+
+        return +choice;
     }
 }
