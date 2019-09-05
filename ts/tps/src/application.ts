@@ -1,3 +1,4 @@
+import * as readline from 'readline-sync';
 import { Product, ProductType } from "./product";
 import { Store } from "./store";
 import { SellProduct } from "./sell-product";
@@ -6,6 +7,36 @@ export class Application {
     constructor(private products: Product[] = [], private stores: Store[] = []) {
         this.fillProducts();
         this.fillStores();
+    }
+
+    run() {
+        if (this.login()) {
+            console.log('Bienvenue');
+        }
+    }
+
+    private login(): boolean {
+        const name = readline.question('Quel est le nom de votre entreprise ?');
+
+        return this.stores.some(store => store.name === name);
+    }
+
+    private login2(): boolean {
+        const name = readline.question('Quel est le nom de votre entreprise ?');
+        let result = false;
+        let counter = 0;
+
+        while (counter < this.stores.length && !result) {
+            const store = this.stores[counter];
+
+            if (store.name === name) {
+                result = true;
+            }
+
+            ++counter;
+        }
+
+        return result;
     }
 
     private fillProducts(): void {
