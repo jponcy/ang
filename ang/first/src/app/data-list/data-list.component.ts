@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
-
-function fakeObs(): Observable<string[]> {
-  const result = new Subject<string[]>();
-
-  return result;
-}
+import { Faker } from './faker';
 
 @Component({
   selector: 'app-data-list',
@@ -29,8 +23,13 @@ export class DataListComponent implements OnInit {
     dependencies: []
   }];
 
+  products = [];
+
   ngOnInit(): void {
-    // const productss
+    const faker = new Faker();
+    const observable = faker.observable();
+
+    observable.subscribe(values => this.products = values);
   }
 
 }
