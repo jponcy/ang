@@ -1,0 +1,34 @@
+table {
+  border-collapse: separate;
+  border: 1px solid gray;
+  border-radius: 15px;
+  min-width: 400px;
+}
+
+td, th {
+  padding: 2px 5px;
+}
+
+td {
+  text-align: center;
+  color: purple;
+}
+
+th {
+  border-bottom: 1px solid gray;
+  font-size: 1.2em;
+}
+
+td:not(:last-child),
+th:not(:last-child) {
+  border-right: 1px solid silver;
+}
+
+.columns {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.columns > * {
+  width: 50%;
+}
