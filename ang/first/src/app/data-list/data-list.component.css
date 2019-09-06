@@ -23,3 +23,12 @@ td:not(:last-child),
 th:not(:last-child) {
   border-right: 1px solid silver;
 }
+
+.columns {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.columns > * {
+  width: 50%;
+}

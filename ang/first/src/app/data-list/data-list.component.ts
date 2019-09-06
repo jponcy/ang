@@ -10,6 +10,7 @@ export class DataListComponent implements OnInit {
   data = [{
     id: 1,
     name: 'Machine à café',
+    lastUpdate: new Date(),
     dependencies: [{
       id: 42,
       label: 'Récolteur'

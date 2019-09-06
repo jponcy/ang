@@ -1,46 +1,53 @@
 <h2>Liste des utilisateurs</h2>
 
-<ng-container [ngSwitch]="products.length">
-  <p *ngSwitchCase="0" class="text text-warning">
-    Chargement en cours
-  </p>
-  <p *ngSwitchCase="1">{{ products[0] }}</p>
-  <ol *ngSwitchDefault>
-    <li *ngFor="let prod of products">
-      {{ prod }}
-    </li>
-  </ol>
-</ng-container>
+<p>{{ data|json }}</p>
 
-<!-- <ol *ngIf="products.length">
-  <li *ngFor="let product of products">{{ product }}</li>
-</ol> -->
+<div class="columns">
+  <!-- <div [ngSwitch]="products.length">
+    <p *ngSwitchCase="0" class="text text-warning">
+      Chargement en cours
+    </p>
+    <p *ngSwitchCase="1">{{ products[0] }}</p>
+    <ol *ngSwitchDefault>
+      <li *ngFor="let prod of products">
+        {{ prod|uppercase }}
+      </li>
+    </ol>
+  </div> -->
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Pièces</th>
-  </tr>
+  <!-- <ol *ngIf="products.length">
+    <li *ngFor="let product of products">{{ product }}</li>
+  </ol> -->
 
-  <ng-container *ngFor="let elt of data">
-    <ng-container *ngIf="elt.dependencies.length; else noDependencies">
-      <tr *ngFor="let piece of elt.dependencies; first as first">
-        <ng-container *ngIf="first">
-          <td [attr.rowspan]="elt.dependencies.length">{{ elt.id }}</td>
-          <td [attr.rowspan]="elt.dependencies.length">{{ elt.name }}</td>
-        </ng-container>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Maj</th>
+      <th>Pièces</th>
+    </tr>
 
-        <td>{{ piece.label }}</td>
-      </tr>
+    <ng-container *ngFor="let elt of data">
+      <ng-container *ngIf="elt.dependencies.length; else noDependencies">
+        <tr *ngFor="let piece of elt.dependencies; first as first">
+          <ng-container *ngIf="first">
+            <td [attr.rowspan]="elt.dependencies.length">{{ elt.id }}</td>
+            <td [attr.rowspan]="elt.dependencies.length">{{ elt.name }}</td>
+            <td [attr.rowspan]="elt.dependencies.length">{{ elt.lastUpdate|date:'dd/MM/yyyy' }}</td>
+          </ng-container>
+
+          <td>{{ piece.label }}</td>
+        </tr>
+      </ng-container>
+
+      <ng-template #noDependencies>
+        <tr>
+          <td>{{ elt.id }}</td>
+          <td>{{ elt.name }}</td>
+          <td>{{ elt.lastUpdate }}</td>
+          <td><p class="text-info">Aucune</p></td>
+        </tr>
+      </ng-template>
     </ng-container>
-
-    <ng-template #noDependencies>
-      <tr>
-        <td>{{ elt.id }}</td>
-        <td>{{ elt.name }}</td>
-        <td><p class="text-info">Aucune</p></td>
-      </tr>
-    </ng-template>
-  </ng-container>
-</table>
+  </table>
+</div>
