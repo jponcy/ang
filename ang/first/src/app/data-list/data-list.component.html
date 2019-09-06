@@ -1,0 +1,18 @@
+<h2>Liste des utilisateurs</h2>
+
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Pièces</td>
+  </tr>
+
+  <tr *ngFor="let elt of data">
+    <td [rowspan]="elt.dependencies.length">{{ elt.id }}</td>
+    <td [rowspan]="elt.dependencies.length">{{ elt.name }}</td>
+    <ng-container *ngFor="let piece of elt.dependencies">
+      <td>{{ piece.label }}</td>
+    </ng-container>
+
+  </tr>
+</table>

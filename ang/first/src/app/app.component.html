@@ -1,0 +1,15 @@
+<h1>Mon site modeste</h1>
+<!-- <h1 class="{{ cssClass }}">Mon super site de la mort qui tue</h1> -->
+
+<p>Image récupérée à partir de {{logo}}.</p>
+
+<img src="{{logo}}" alt="{{'logo included with wrong way'}}">
+<img [src]="logo" alt="logo">
+
+<p *ngIf="true; else ctEvident">On me voit</p>
+
+<ng-template #ctEvident>
+  <p>Je suis un NINJA!!!!</p>
+</ng-template>
+
+<app-data-list></app-data-list>

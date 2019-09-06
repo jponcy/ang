@@ -1,0 +1,14 @@
+.uggly {
+  color: white;
+  background-color: red;
+  border: 12px dashed lime;
+  font-size: 5em;
+}
+
+.worst {
+  color: red;
+  background-color: silver;
+  border-radius: 15px;
+  border: 1px solid gray;
+  text-align: center;
+}
