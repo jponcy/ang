@@ -1,0 +1,27 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.grid > div {
+  /* Should add rules for specific browsers. */
+  cursor: pointer;
+  width: 100%;
+  margin: 20px;
+  font-size: 3em;
+  text-align: center;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 443px) {
+  .grid > div {
+    width: 48%;
+    padding: 100px 5px;
+    margin: 5px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: rgba(10, 10, 250, 0.842);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}

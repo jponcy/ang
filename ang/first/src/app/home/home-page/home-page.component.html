@@ -1,0 +1,9 @@
+<div class="grid">
+  <ng-container *ngFor="let mod of modules; last as last">
+    <div *ngIf="!last || ((currentUser | async) || {admin: false}).admin" (click)="onModuleClick(mod)">
+      {{mod}}
+    </div>
+  </ng-container>
+</div>
+
+<!-- <input type="text" (change)="coucou('name', $event)"> -->
