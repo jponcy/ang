@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DataListComponent } from './data-list/data-list.component';
+import { CompanyModule } from './company/company.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { DataListComponent } from './data-list/data-list.component';
     DataListAsyncComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CompanyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

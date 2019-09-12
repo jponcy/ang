@@ -1,0 +1,9 @@
+<p>
+  L'entreprise {{companyName}} a {{antennas.length}} antennes. Elles sont présentes dans les villes suivantes :
+</p>
+
+<ul>
+  <li *ngFor="let a of antennas">
+    {{a.city}}
+  </li>
+</ul>
