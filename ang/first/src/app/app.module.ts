@@ -7,6 +7,7 @@ import { CompanyModule } from './company/company.module';
 import { DataListAsyncComponent } from './data-list-async/data-list-async.component';
 import { DataListComponent } from './data-list/data-list.component';
 import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     CompanyModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

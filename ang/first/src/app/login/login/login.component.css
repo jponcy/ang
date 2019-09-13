@@ -1,0 +1,16 @@
+div,
+form {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+
+/* :not([type="submit"]) */
+form input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+}

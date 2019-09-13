@@ -1,0 +1,12 @@
+<div>
+  <img src="https://fakeimg.pl/400x350" alt="Apside logo">
+
+  <form (submit)="submitLogin($event)">
+    <input (change)="change($event.target)" type="text"     name="login"    placeholder="login"    required="required">
+    <input (change)="change($event.target)" type="password" name="password" placeholder="password" required="required">
+
+    <p class="error" *ngIf="error">Login ou mot de passe invalide.</p>
+
+    <input type="submit" value="Se connecter">
+  </form>
+</div>

@@ -16,4 +16,8 @@
 
 <app-company-list></app-company-list> -->
 
-<app-home-page></app-home-page>
+<app-home-page *ngIf="(user$|async); else notLogued"></app-home-page>
+
+<ng-template #notLogued>
+  <app-login></app-login>
+</ng-template>
