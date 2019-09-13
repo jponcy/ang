@@ -55,7 +55,6 @@ export class BarbecueController {
 
     entity.label = bbq.label === null ? null : bbq.label || entity.label;
 
-
     return this.service.update(entity);
   }
 }

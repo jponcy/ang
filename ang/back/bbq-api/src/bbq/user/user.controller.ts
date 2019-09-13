@@ -5,10 +5,8 @@ import { UserService } from './user.service';
 
 @Controller('user')
 @Crud({
-  model: {
-    type: User,
-  },
+  model: { type: User },
 })
 export class UserController {
-  constructor(public service: UserService){}
+  constructor(public service: UserService) {}
 }

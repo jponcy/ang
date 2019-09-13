@@ -7,7 +7,7 @@ export class User {
     @Generated()
     id: number;
 
-    @Column()
+    @Column({ unique: true })
     @IsNotEmpty()
     username: string;
 

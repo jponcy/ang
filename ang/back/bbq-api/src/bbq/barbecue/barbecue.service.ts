@@ -8,11 +8,11 @@ export class BarbecueService {
   constructor(@InjectRepository(Barbecue) private readonly repo: Repository<Barbecue>) {}
 
   getAll(): Promise<Barbecue[]> {
-    return this.repo.find();
+    return this.repo.find({relations: ['owner']});
   }
 
   findOne(id: number): Promise<Barbecue> {
-    return this.repo.findOne(id);
+    return this.repo.findOne(id, {relations: ['owner']});
   }
 
   create(bbq: Barbecue): Promise<Barbecue> {

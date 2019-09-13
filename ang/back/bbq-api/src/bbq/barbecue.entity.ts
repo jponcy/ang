@@ -1,5 +1,5 @@
 import { Entity, Column, Generated, PrimaryColumn, ManyToOne } from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { IsNotEmpty, IsOptional, IsDate, IsDateString } from 'class-validator';
 import { User } from './user.entity';
 
@@ -35,7 +35,8 @@ export class Barbecue {
   // users: User[];
 
   // @ApiModelProperty({type: User, isArray: false})
-  @ManyToOne(type => User, user => user.id)
+  @ManyToOne((type) => User)
+  @IsNotEmpty()
   owner: User;
 
   @Column()
