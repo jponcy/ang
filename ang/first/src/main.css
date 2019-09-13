@@ -2,3 +2,8 @@
 /* * {
   background: red!important;
 } */
+
+p.info {
+  color: blue;
+  text-decoration: overline dashed;
+}

@@ -1,0 +1,13 @@
+@mixin animation($params) {
+  -webkit-animation: $params;
+  -moz-animation: $params;
+  -o-animation: $params;
+  animation: $params;
+}
+
+@mixin animation-timing-function($params) {
+  -webkit-animation-timing-function: $params;
+  -moz-animation-timing-function: $params;
+  -o-animation-timing-function: $params;
+  animation-timing-function: $params;
+}

@@ -3,7 +3,7 @@
   flex-flow: row wrap;
 }
 
-.grid > div {
+.grid>div {
   /* Should add rules for specific browsers. */
   cursor: pointer;
   width: 100%;
@@ -12,16 +12,38 @@
   text-align: center;
   padding: 5px;
   text-transform: uppercase;
+  border-top: 1px dashed silver;
+  flex-grow: 1;
 }
 
-@media screen and (min-width: 443px) {
+@media screen and (min-width: 800px) {
   .grid > div {
-    width: 48%;
+    width: 40%;
     padding: 100px 5px;
     margin: 5px;
     border: 1px solid gray;
     border-radius: 15px;
     background-color: rgba(10, 10, 250, 0.842);
     font-family: Arial, Helvetica, sans-serif;
+    border-top: inherit;
   }
+}
+
+@keyframes module-animation {
+  50% { background-color: orange; color: silver; transform: rotate(20deg); }
+}
+
+@keyframes go-out {
+  50% {transform: scale(1.2, 0.8); }
+}
+
+.grid>.animated {
+  animation: module-animation 5s infinite;
+  text-transform: capitalize;
+  background-color: aliceblue; color: black;
+}
+
+.grid>.animated:hover {
+  animation: module-animation 5s infinite, go-out 3s infinite;
+  position: relative;
 }

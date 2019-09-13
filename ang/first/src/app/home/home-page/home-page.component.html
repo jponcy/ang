@@ -1,6 +1,10 @@
-<div class="grid">
+<ng-template #loading>
+  <app-progress></app-progress>
+</ng-template>
+
+<div class="grid" *ngIf="(currentUser | async) as user; else loading">
   <ng-container *ngFor="let mod of modules; last as last">
-    <div *ngIf="!last || ((currentUser | async) || {admin: false}).admin" (click)="onModuleClick(mod)">
+    <div *ngIf="!last || user.admin" (click)="onModuleClick(mod)" [ngClass]="{animated: last}">
       {{mod}}
     </div>
   </ng-container>

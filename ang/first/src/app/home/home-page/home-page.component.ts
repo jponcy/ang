@@ -26,6 +26,5 @@ export class HomePageComponent implements OnInit {
   // coucou(event: Event) {
   //   console.log('coucou');
   //   console.log(event);
-
   // }
 }

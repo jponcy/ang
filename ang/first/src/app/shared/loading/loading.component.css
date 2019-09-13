@@ -1,0 +1,38 @@
+@keyframes loading {
+  50% {
+    left: 100%;
+    left: calc(100% - 200px);
+  }
+}
+
+div,
+p {
+  padding: 0;
+  margin: 0;
+  height: 15px;
+}
+
+div {
+  background-color: silver;
+  border: 1px solid gray;
+}
+
+p {
+  -webkit-animation: loading 2s infinite;
+  -moz-animation: loading 2s infinite;
+  -o-animation: loading 2s infinite;
+  animation: loading 2s infinite;
+
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+
+  width: 200px;
+  position: relative;
+  left: 0px;
+  background-color: cornflowerblue;
+
+  /* Hide text: */
+  color: transparent;
+}
