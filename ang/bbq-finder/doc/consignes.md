@@ -10,3 +10,13 @@
     - address
 
 1. Modifier la fiche détaillé d'un  BBQ afin d'afficher tous les champs (sauf l'id).
+
+1. Faire un nouveau composant permettant la création d'un nouvel utilisateur
+
+1. Lier la création d'utilisateur à l'API
+
+1. Créer un composant de création de barbecue (lié à l'API). On demandera le champ id de l'utilisateur participant (pas de login)
+
+1. Adapter les composants de bbq pour qu'ils soient maintenant lié à l'API et non plus aux fausses données
+
+1. Permettre d'ajouter sa participation sur un barbecue
