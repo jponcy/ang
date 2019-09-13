@@ -4,8 +4,8 @@ export class Barbecue {
   id: number;
   label: string;
   startAt: Date;
-  price: number;
   endAt: Date;
+  price: number;
   users: User[];
   owner: User;
   address: string;
