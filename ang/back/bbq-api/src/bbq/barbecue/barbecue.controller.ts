@@ -3,7 +3,7 @@ import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseIntercep
 import { NotFoundInterceptor } from '../../not-found.interceptor';
 import { Barbecue } from './../barbecue.entity';
 import { BarbecueService } from './barbecue.service';
-import { ApiUseTags, ApiResponseModelProperty, ApiResponse } from '@nestjs/swagger';
+import { ApiUseTags, ApiResponseModelProperty, ApiResponse, ApiOkResponse, ApiBadRequestResponse, ApiCreatedResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('bbq')
 @ApiUseTags('barbecue')
@@ -19,8 +19,8 @@ export class BarbecueController {
 
   @Get(':id')
   @UseInterceptors(NotFoundInterceptor)
-  @ApiResponse({ status: 200, type: Barbecue })
-  @ApiResponse({ status: 404, description: 'No barbecue found for given id' })
+  @ApiOkResponse({ type: Barbecue })
+  @ApiBadRequestResponse({ description: 'No barbecue found for given id' })
   getOne(@Param('id') id: number): Promise<Barbecue> {
     return this.service.findOne(id);
   }
@@ -33,6 +33,8 @@ export class BarbecueController {
    * -d '{"label": "toto", "startAt": "2010-08-26T05:05:05", "address": "10 impasse de l esperance"}'
    */
   @Post()
+  @ApiOperation({ title: 'Create a new barbecue' })
+  @ApiCreatedResponse({ description: 'The record has been successfully created.', type: Barbecue })
   create(@Body() bbq: Barbecue) {
     return this.service.create(bbq);
   }

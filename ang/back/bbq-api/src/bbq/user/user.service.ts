@@ -6,10 +6,7 @@ import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 
 @Injectable()
 export class UserService extends TypeOrmCrudService<User> {
-    constructor(
-        @InjectRepository(User)
-        readonly repo: Repository<User>,
-    ) {
+    constructor(@InjectRepository(User) readonly repo: Repository<User>) {
         super(repo);
     }
 }

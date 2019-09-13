@@ -1,5 +1,5 @@
-import { ApiUseTags } from '@nestjs/swagger';
-import { Controller } from '@nestjs/common';
+import { ApiUseTags, ApiModelProperty } from '@nestjs/swagger';
+import { Controller, Get } from '@nestjs/common';
 import { Crud } from '@nestjsx/crud';
 import { User } from '../user.entity';
 import { UserService } from './user.service';

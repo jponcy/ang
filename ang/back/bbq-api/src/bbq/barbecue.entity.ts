@@ -25,12 +25,12 @@ export class Barbecue {
   @Column()
   @IsNotEmpty()
   @IsDateString()
-  @ApiModelProperty()
+  @ApiModelProperty({ type: 'string', format: 'ISO' })
   startAt: Date;
 
   @Column({ nullable: true })
   @IsOptional()
-  @ApiModelProperty()
+  @ApiModelProperty({ type: 'string', format: 'ISO' })
   endAt: Date;
 
   @Column({ type: 'float', nullable: true })
@@ -53,6 +53,7 @@ export class Barbecue {
 
   @ManyToMany((type) => User)
   @IsOptional()
-  @ApiModelProperty({ type: 'number', isArray: true })
+  @Exclude({ toClassOnly: true })
+  @ApiModelProperty({ type: 'number', isArray: true, uniqueItems: true })
   users: User[];
 }
