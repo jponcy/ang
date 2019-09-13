@@ -1,23 +1,27 @@
-import { Body, Controller, Get, Post, Param, Res, HttpStatus, UseInterceptors, NotFoundException, Put } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 
+import { NotFoundInterceptor } from '../../not-found.interceptor';
 import { Barbecue } from './../barbecue.entity';
 import { BarbecueService } from './barbecue.service';
-import { Response } from 'express';
-import { NotFoundInterceptor } from '../../not-found.interceptor';
+import { ApiUseTags, ApiResponseModelProperty, ApiResponse } from '@nestjs/swagger';
 
 @Controller('bbq')
+@ApiUseTags('barbecue')
 export class BarbecueController {
 
   constructor(private readonly service: BarbecueService) {}
 
   @Get()
+  @ApiResponse({ status: 200, type: Barbecue, isArray: true })
   getAll() {
     return this.service.getAll();
   }
 
   @Get(':id')
   @UseInterceptors(NotFoundInterceptor)
-  getOne(@Param('id') id: number) {
+  @ApiResponse({ status: 200, type: Barbecue })
+  @ApiResponse({ status: 404, description: 'No barbecue found for given id' })
+  getOne(@Param('id') id: number): Promise<Barbecue> {
     return this.service.findOne(id);
   }
 

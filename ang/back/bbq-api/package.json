@@ -16,12 +16,15 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "compodoc": "npx compodoc -p tsconfig.json -s"
   },
   "dependencies": {
+    "@compodoc/compodoc": "^1.1.10",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "@nestjs/swagger": "^3.1.0",
     "@nestjs/typeorm": "^6.1.3",
     "@nestjsx/crud": "^4.2.0",
     "@nestjsx/crud-typeorm": "^4.2.0",
@@ -31,6 +34,7 @@
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
     "sqlite3": "^4.1.0",
+    "swagger-ui-express": "^4.1.0",
     "typeorm": "^0.2.18"
   },
   "devDependencies": {
