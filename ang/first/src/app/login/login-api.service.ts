@@ -9,23 +9,27 @@ import { tap } from 'rxjs/operators';
 })
 export class LoginApiService {
 
-  constructor(private currentUser: CurrentUserService) { }
+  private users: User[];
+
+  constructor(private currentUser: CurrentUserService) {
+    // Code de test pour faire changer l'utilisateur.
+    this.users = [{
+      id: 1,
+      username: 'Toto',
+      password: 'aze',
+      admin: false
+    }, {
+      id: 2,
+      username: 'Admin',
+      password: 'admin',
+      admin: true
+    }];
+  }
 
   login(login: string, password: string): Observable<User> {
+    const user = this.users.find(u => u.username === login && u.password === password) || null;
 
-    let res: User;
-
-    if (login === 'admin' && password === 'admin') {
-      res = {
-        id: 321,
-        username: 'admin',
-        admin: true
-      };
-    } else {
-      res = null;
-    }
-
-    return of(res)
+    return of(user)
       .pipe(tap(v => {
         if (v && v.id) {
           this.currentUser.set(v);

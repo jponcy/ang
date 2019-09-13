@@ -27,4 +27,8 @@ export class HomePageComponent implements OnInit {
   //   console.log('coucou');
   //   console.log(event);
   // }
+
+  disconnect() {
+    this.currentUserService.set(null);
+  }
 }
