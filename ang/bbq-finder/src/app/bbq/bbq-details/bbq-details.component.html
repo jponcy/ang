@@ -1,3 +1,39 @@
-<p>
-  bbq-details works!
-</p>
+<div *ngIf="(barbecue$ | async) as bbq">
+  <!-- <tr *ngFor="let col of ['label', 'price']">
+    <td scope="col">{{ col }}</td>
+    <td>{{ bbq[col] }}</td>
+  </tr> -->
+
+  <tr>
+    <td scope="col">Label</td>
+    <td>{{ bbq.label }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Début</td>
+    <td>{{ bbq.startAt|date:'dd/MM/yyyy hh:mm' }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Fin</td>
+    <td>{{ bbq.endAt|date:'dd/MM/yyyy hh:mm' || 'Non définie' }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Prix</td>
+    <td>{{ bbq.price }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Organisateur</td>
+    <td>{{ bbq.owner?.username }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Lieux</td>
+    <td>{{ bbq.address }}</td>
+  </tr>
+  <tr>
+    <td scope="col">Participants</td>
+    <td>
+      <ul>
+        <li *ngFor="let u of bbq.users">{{ u.username }} ({{ u.address }})</li>
+      </ul>
+    </td>
+  </tr>
+</div>

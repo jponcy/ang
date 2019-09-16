@@ -1,4 +1,7 @@
+import { Barbecue } from './../barbecue';
 import { Component, OnInit } from '@angular/core';
+import { BarbecueApiService } from 'src/app/barbecue-api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bbq-details',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BbqDetailsComponent implements OnInit {
 
-  constructor() { }
+  barbecue$: Observable<Barbecue>;
+
+  constructor(private api: BarbecueApiService) { }
 
   ngOnInit() {
+    this.barbecue$ = this.api.getOne();
   }
-
 }

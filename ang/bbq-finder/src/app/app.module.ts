@@ -7,10 +7,12 @@ import { LoginModule } from './login/login.module';
 import { FoodModule } from './food/food.module';
 import { BbqModule } from './bbq/bbq.module';
 import { PlaceModule } from './place/place.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
