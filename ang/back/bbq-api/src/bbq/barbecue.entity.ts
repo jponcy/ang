@@ -8,14 +8,13 @@ import { ApiModelProperty } from '@nestjs/swagger';
 export class Barbecue {
   @PrimaryColumn()
   @Generated()
-  @Exclude()
   @ApiModelProperty({ readOnly: true })
   id: number;
 
   @Column()
   @IsNotEmpty()
   @ApiModelProperty()
-  @Expose({ groups: ['toto'] })
+  @Expose()
   label: string;
 
   @Column({ type: 'text', nullable: true })
@@ -51,7 +50,7 @@ export class Barbecue {
   @IsNotEmpty()
   // @ApiModelProperty({ type: 'number', minimum: 1 })
   @ApiModelProperty()
-  @Transform(owner => owner.id)
+  // @Transform(owner => owner.id)
   owner: User;
 
   @ManyToMany((type) => User)

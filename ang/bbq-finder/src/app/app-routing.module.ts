@@ -9,7 +9,7 @@ const routes: Routes = [{
   path: 'bbq',
   component: BbqListComponent
 }, {
-  path: 'bbq/details',
+  path: 'bbq/:id/details',
   component: BbqDetailsComponent
 }, {
   path: 'user',

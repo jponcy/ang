@@ -9,6 +9,7 @@ import { BbqModule } from './bbq/bbq.module';
 import { PlaceModule } from './place/place.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
     NotFoundComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     LoginModule,
