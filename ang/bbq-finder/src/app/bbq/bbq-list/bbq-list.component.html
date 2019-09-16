@@ -1,12 +1,36 @@
-<ng-template #loading>Chargement...</ng-template>
+<table>
+<tr>
+  <th>
+    Label
+  </th>
+  <th>
+    Début
+  </th>
+  <th>
+    Nb participants
+  </th>
+  <th>
+    Organisateur
+  </th>
+  <th>
+    Lieux
+  </th>
+</tr>
 
-<div *ngIf="(data$|async) as entities; else loading">
-  <ul *ngIf="entities.length; else noRecords">
-    <li *ngFor="let bbq of entities">{{bbq.label}}</li>
-  </ul>
+<tr *ngFor="let bbq of (barbecues$ | async)">
+  <td>{{ bbq.label }}</td>
+  <td>{{ bbq.startAt|date:'dd/MM/yyyy hh:mm' }}</td>
+  <td>{{ bbq.users.length }}</td>
+  <td>{{ bbq.owner?.username || 'N.C.' }}</td>
+  <td>{{ bbq.address }}</td>
+</tr>
 
-  <ng-template #noRecords>
-    <p>Aucune données</p>
-  </ng-template>
+<!-- <tr *ngFor="let bbq of barbecues">
+  <td>{{ bbq.label }}</td>
+  <td>{{ bbq.startAt|date }}</td>
+  <td>{{ bbq.users.length }}</td>
+  <td>{{ bbq.owner?.username || 'N.C.' }}</td>
+  <td>{{ bbq.address }}</td>
+</tr> -->
 
-</div>
+</table>
