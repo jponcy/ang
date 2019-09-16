@@ -3,6 +3,7 @@ import { BbqListComponent } from './bbq/bbq-list/bbq-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { userRoutes } from './user/user-routing';
 
 const routes: Routes = [{
   path: 'bbq',
@@ -10,6 +11,9 @@ const routes: Routes = [{
 }, {
   path: 'bbq/details',
   component: BbqDetailsComponent
+}, {
+  path: 'user',
+  children: userRoutes
 }, {
   path: '',
   pathMatch: 'full',

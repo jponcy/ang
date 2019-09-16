@@ -1,0 +1,13 @@
+<a [routerLink]="['new']">Créer un nouvel utilisateur</a>
+
+<ng-template #loading>Chargement...</ng-template>
+
+<ng-container *ngIf="(data$ | async) as users; else loading">
+  <ul *ngIf="users.length; else noData">
+    <li *ngFor="let u of users">{{ u.username }}</li>
+  </ul>
+
+  <ng-template #noData>
+    <p>Aucune données</p>
+  </ng-template>
+</ng-container>

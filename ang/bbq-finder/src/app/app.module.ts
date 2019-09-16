@@ -8,6 +8,7 @@ import { FoodModule } from './food/food.module';
 import { BbqModule } from './bbq/bbq.module';
 import { PlaceModule } from './place/place.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoginModule,
     FoodModule,
     BbqModule,
-    PlaceModule
+    PlaceModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

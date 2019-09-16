@@ -1,0 +1,26 @@
+<h1>Création d'un nouvel utilisateur</h1>
+
+<form (submit)="onSubmit($event)">
+  <div>
+    <label for="username">Username</label>
+    <input
+      (change)="onInputChange($event)"
+      type="text"
+      id="username"
+      name="username"
+      required="required">
+  </div>
+
+  <div>
+    <label for="address">Address</label>
+    <input
+      (change)="onInputChange($event)"
+      type="text"
+      id="address"
+      name="address"
+      required="required">
+  </div>
+
+  <!-- <input type="cancel" value="Annuler"> -->
+  <input type="submit" value="Créer">
+</form>
