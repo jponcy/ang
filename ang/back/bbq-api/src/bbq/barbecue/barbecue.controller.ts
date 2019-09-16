@@ -1,9 +1,10 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseInterceptors } from '@nestjs/common';
-
+import { Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
+import { Expose } from 'class-transformer';
 import { NotFoundInterceptor } from '../../not-found.interceptor';
 import { Barbecue } from './../barbecue.entity';
 import { BarbecueService } from './barbecue.service';
-import { ApiUseTags, ApiResponseModelProperty, ApiResponse, ApiOkResponse, ApiBadRequestResponse, ApiCreatedResponse, ApiOperation } from '@nestjs/swagger';
+
 
 @Controller('bbq')
 @ApiUseTags('barbecue')
@@ -11,8 +12,10 @@ export class BarbecueController {
 
   constructor(private readonly service: BarbecueService) {}
 
+  @UseInterceptors(ClassSerializerInterceptor)
   @Get()
   @ApiResponse({ status: 200, type: Barbecue, isArray: true })
+  @Expose({ groups: ['titi'] })
   getAll() {
     return this.service.getAll();
   }

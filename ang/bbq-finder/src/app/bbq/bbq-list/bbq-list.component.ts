@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BbqService } from '../bbq.service';
+import { Observable } from 'rxjs';
+import { Barbecue } from '../barbecue';
 
 @Component({
   selector: 'app-bbq-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BbqListComponent implements OnInit {
 
-  constructor() { }
+  data$: Observable<Barbecue[]>;
+
+  constructor(private readonly api: BbqService) { }
 
   ngOnInit() {
+
+    this.data$ = this.api.getAll();
   }
 
 }

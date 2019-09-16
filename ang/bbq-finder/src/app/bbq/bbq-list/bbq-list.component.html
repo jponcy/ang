@@ -1,3 +1,12 @@
-<p>
-  bbq-list works!
-</p>
+<ng-template #loading>Chargement...</ng-template>
+
+<div *ngIf="(data$|async) as entities; else loading">
+  <ul *ngIf="entities.length; else noRecords">
+    <li *ngFor="let bbq of entities">{{bbq.label}}</li>
+  </ul>
+
+  <ng-template #noRecords>
+    <p>Aucune données</p>
+  </ng-template>
+
+</div>
